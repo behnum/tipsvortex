@@ -31,3 +31,66 @@ Your app is ready to be deployed!
 ## Live demo
 
 Coming soon
+
+## SQL queries
+
+### Set up and populating data
+
+```sql
+CREATE TABLE sources (
+   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   source varchar(255) NOT NULL UNIQUE
+);
+```
+
+```sql
+CREATE TABLE categories (
+   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   category varchar(255) NOT NULL UNIQUE
+);
+```
+
+```sql
+CREATE TABLE tips (
+   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   tip varchar(255) NOT NULL UNIQUE,
+   source_id int NOT NULL,
+   category_id int NOT NULL,
+   KEY source_id_idx (source_id),
+   KEY category_id_idx (category_id)
+);
+```
+
+```sql
+SHOW TABLES;
+```
+
+### Inserting data
+
+```sql
+INSERT INTO sources (source) VALUES ('Foo');
+```
+
+```sql
+INSERT INTO categories (category) VALUES ('Tools');
+```
+
+```sql
+INSERT INTO tips (tip, source_id, category_id) VALUES ("Text here.", 1, 1);
+```
+
+### Selecting data
+
+```sql
+SELECT S.source, C.category, T.tip
+FROM tips T
+INNER JOIN sources S ON T.source_id = S.id
+INNER JOIN categories C ON T.category_id = C.id;
+```
+
+#### Output sample
+
+| Source             | Category | Tip                                                                                                                                                                                                                                                                     |
+| ------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Visual Studio Code | Tools    | IntelliSense can be additionally customized to fit your workflow and personal preferences. (See: [https://code.visualstudio.com/docs/editor/intellisense#\_customizing-intellisense](https://code.visualstudio.com/docs/editor/intellisense#_customizing-intellisense)) |
+| GeeksforGeeks.org  | Misc     | Write clean, readable code: meaningful names, follow PEP 8, break tasks into functions, comment, use version control. Code is read more than written, so make it easy for others (and future you) to understand.                                                        |
