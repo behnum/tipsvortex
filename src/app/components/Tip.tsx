@@ -37,7 +37,7 @@ export default function Tip(randomTip: Tip) {
       </h1>
       <div className="grow mt-24">
         <p
-          className={`text-1xl text-center max-w-3xl leading-normal ${poppins.className}`}
+          className={`text-2xl text-center max-w-3xl leading-normal ${poppins.className} break-all`}
         >
           &ldquo;{randomTip.tip}&rdquo;
         </p>
