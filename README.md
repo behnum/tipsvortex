@@ -30,7 +30,7 @@ Your app is ready to be deployed!
 
 ## Live demo
 
-Coming soon
+https://tipsvortex.vercel.app/
 
 ## SQL queries
 
